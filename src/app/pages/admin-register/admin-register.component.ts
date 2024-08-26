@@ -30,7 +30,8 @@ export class AdminRegisterComponent {
 this.route.navigate(['/login'])
      },
      error:err=>{
-      this.toastr.error(err.error.message)
+      this.toastr.error(err.error.error);
+      console.log(err)
      }
     })
     }else{
