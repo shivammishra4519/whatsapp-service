@@ -1,0 +1,31 @@
+.table-container {
+    /* max-height: 100vh; Set the max-height for the table container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 1px solid #ccc; /* Add a border around the table container */
+  }
+  
+  .message-table {
+    width: 100%; /* Make the table take up the full width of the container */
+    border-collapse: collapse; /* Collapse the borders between table cells */
+  }
+  
+  .message-table th, .message-table td {
+    border: 1px solid #ddd; /* Add borders to table cells */
+    padding: 8px; /* Add padding to table cells */
+    text-align: left; /* Align text to the left */
+  }
+  
+  .message-table th {
+    background-color: #f2f2f2; /* Set background color for table headers */
+    position: sticky; /* Make headers sticky when scrolling */
+    top: 0; /* Stick headers to the top */
+  }
+  
+  .message-table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Alternate row background color */
+  }
+  
+  .message-table tr:hover {
+    background-color: #ddd; /* Add hover effect for table rows */
+  }
+  

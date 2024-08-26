@@ -1,0 +1,64 @@
+
+  
+  <!-- home.component.html -->
+<app-navbar></app-navbar>
+
+<header class="hero bg-dark text-white text-center py-5">
+  <div class="container">
+    <h1 class="display-4">Welcome to WhatsApp API Service</h1>
+    <p class="lead">Seamlessly connect with your customers through WhatsApp.</p>
+    <a routerLink="/user-register" class="btn btn-primary btn-lg">Get Started</a>
+  </div>
+</header>
+
+<section id="features" class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Our Features</h2>
+    <div class="row text-center">
+      <div class="col-md-4 mb-4">
+        <div class="feature-icon mb-3">
+          <i class="bi bi-chat-dots" style="font-size: 3rem; color: #007bff;"></i>
+        </div>
+        <h3>Instant Messaging</h3>
+        <p>Send and receive messages in real-time to ensure instant communication with your customers.</p>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="feature-icon mb-3">
+          <i class="bi bi-graph-up" style="font-size: 3rem; color: #28a745;"></i>
+        </div>
+        <h3>Analytics</h3>
+        <p>Monitor and analyze your messaging performance with integrated analytics tools.</p>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="feature-icon mb-3">
+          <i class="bi bi-gear" style="font-size: 3rem; color: #ffc107;"></i>
+        </div>
+        <h3>Customization</h3>
+        <p>Customize your messaging experience to align with your brand and business needs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="bg-light py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Contact Us</h2>
+    <form class="contact-form">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" placeholder="Your Name">
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="email" placeholder="Your Email">
+      </div>
+      <div class="mb-3">
+        <label for="message" class="form-label">Message</label>
+        <textarea class="form-control" id="message" rows="4" placeholder="Your Message"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Send Message</button>
+    </form>
+  </div>
+</section>
+
+

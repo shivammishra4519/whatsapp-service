@@ -1,0 +1,17 @@
+/* message-form.component.css */
+.container {
+    max-width: 800px;
+  }
+  
+  .form-control {
+    border-radius: 0.25rem;
+  }
+  
+  .btn-primary {
+    border-radius: 0.25rem;
+  }
+  
+  .row > div {
+    margin-bottom: 1rem;
+  }
+  

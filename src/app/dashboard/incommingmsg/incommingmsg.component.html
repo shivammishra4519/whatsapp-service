@@ -1,0 +1,23 @@
+<div class="table-container">
+    <table class="message-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>From</th>
+          <th>Content</th>
+          <th>type</th>
+          <th>Timestamp</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let message of messageArray; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ message.from }}</td>
+          <td>{{ message.body }}</td>
+          <td>{{ message.type }}</td>
+          <td>{{ message.timestamp | date:'medium'}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

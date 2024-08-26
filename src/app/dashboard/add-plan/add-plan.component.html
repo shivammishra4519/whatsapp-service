@@ -1,0 +1,108 @@
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title text-center">Add New Plan</h4>
+          </div>
+          <div class="card-body">
+            <form (ngSubmit)="onSubmit()" #planForm="ngForm">
+              <div class="form-group mb-3">
+                <label for="planName" class="form-label">Plan Name</label>
+                <input
+                  type="text"
+                  id="planName"
+                  class="form-control"
+                  [(ngModel)]="plan.name"
+                  name="name"
+                  required
+                />
+              </div>
+  
+              <div class="form-group mb-3">
+                <label for="planDescription" class="form-label">Plan Description</label>
+                <textarea
+                  id="planDescription"
+                  class="form-control"
+                  [(ngModel)]="plan.description"
+                  name="description"
+                  rows="3"
+                  required
+                ></textarea>
+              </div>
+  
+              <div class="form-group mb-3">
+                <label for="planPrice" class="form-label">Price</label>
+                <input
+                  type="number"
+                  id="planPrice"
+                  class="form-control"
+                  [(ngModel)]="plan.price"
+                  name="price"
+                  required
+                />
+              </div>
+  
+              <div class="form-group mb-3">
+                <label for="planDuration" class="form-label">Duration (in days)</label>
+                <input
+                  type="number"
+                  id="planDuration"
+                  class="form-control"
+                  [(ngModel)]="plan.duration"
+                  name="duration"
+                  required
+                />
+              </div>
+  
+              <div class="form-group mb-3">
+                <label for="planDuration" class="form-label">IP Limit</label>
+                <input
+                  type="text"
+                  id="planDuration"
+                  class="form-control"
+                  [(ngModel)]="plan.ip"
+                  name="duration"
+                  required
+                />
+              </div>
+              <div class="form-group mb-3">
+                <label for="planDuration" class="form-label">Instance Limit </label>
+                <input
+                  type="text"
+                  id="planDuration"
+                  class="form-control"
+                  [(ngModel)]="plan.instance"
+                  name="duration"
+                  required
+                />
+              </div>
+              <div class="form-group mb-3">
+                <label for="autoReplay" class="form-label">Auto Replay</label>
+                <select
+                  id="autoReplay"
+                  class="form-control"
+                  [(ngModel)]="plan.autoReplay"
+                  name="autoReplay"
+                  required
+                >
+                  <option value="" disabled>Select an option</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+              
+  
+              <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary btn-block" [disabled]="!planForm.form.valid">
+                  Add Plan
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

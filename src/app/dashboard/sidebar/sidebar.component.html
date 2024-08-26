@@ -1,0 +1,23 @@
+<div id="mySidebar" class="sidebar" [ngClass]="{'closed': isClosed, 'open': isOpen}">
+  <div class="sidebar-header">
+      <h3>Menu</h3>
+      <button class="toggle-btn" (click)="toggleNav()">
+         <span style="font-size: 40px;"> &#8801;</span>
+      </button>
+  </div>
+  <a routerLink="/dashboard/home"><img src="../../../assets/house-solid.svg" alt="" height="40px" width="40px"> <span>Home</span></a>
+  <a routerLink="/dashboard/whatsapp-login"><i class="fas fa-chart-line"></i> <span>Login Whatsapp</span></a>
+  <a routerLink="/dashboard/ip-whitelist"><i class="fas fa-user"></i> <span>Ip Whitelist</span></a>
+  <a routerLink="/dashboard/message"><i class="fas fa-envelope"></i> <span>Messages</span></a>
+  <a routerLink="/dashboard/outgoing-msg"><i class="fas fa-envelope"></i> <span>Outgoing Messages</span></a>
+  <a routerLink="/dashboard/incomming-msg"><i class="fas fa-envelope"></i> <span>Incomming Messages</span></a>
+  <a routerLink="/dashboard/plans"><i class="fas fa-cog"></i> <span>Plans</span></a>
+  <a routerLink="/dashboard/add-plan" *ngIf="auth.isAdmin()"><i class="fas fa-cog"></i> <span>Add Plan</span></a>
+  <div class="btn-div" >
+    <button class="btn btn-success" (click)="logout()">Logout</button>
+  </div>
+</div>
+
+<div id="main" [ngStyle]="{'margin-left.px': isClosed ? 70 : 250}">
+  <router-outlet />
+</div>
