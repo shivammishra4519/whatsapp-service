@@ -24,7 +24,20 @@ export class PlansComponent {
     return designClasses[index % designClasses.length];
   }
   buyPlan(id:any){
-    console.log("id",id)
-    alert("sds")
+    console.log(id)
+  this.service.buyPlan(id).subscribe({
+    next: (res) => {
+        
+      if (res  && res.paymentUrl) {
+        window.location.href = res.paymentUrl;
+      } else {
+        alert('failed to get url')
+      }
+    },
+    error: (err) => {
+      console.log(err)
+      alert('Error Processing Payment')
+    }
+  })
   }
 }

@@ -15,6 +15,7 @@ import { adminAuthGuard } from './gaurd/admin-auth.guard';
 import { MessageComponent } from './dashboard/message/message.component';
 import { SendedmsgComponent } from './dashboard/sendedmsg/sendedmsg.component';
 import { IncommingmsgComponent } from './dashboard/incommingmsg/incommingmsg.component';
+import { PaymentSuccessComponent } from './pages/payment-success/payment-success.component';
 
 const routes: Routes = [
   {path:"home",component:HomeComponent},
@@ -31,8 +32,7 @@ const routes: Routes = [
     {path:"incomming-msg",component:IncommingmsgComponent},
     {path:"add-plan",component:AddPlanComponent,canActivate:[adminAuthGuard]},
   ],canActivate: [authGuard] },
-  {path:"side",component:SidebarComponent},
-  {path:"side",component:SidebarComponent},
+  {path:"payment-success",component:PaymentSuccessComponent},
 ];
 
 @NgModule({

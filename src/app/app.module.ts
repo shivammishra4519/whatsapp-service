@@ -21,6 +21,7 @@ import { AdminRegisterComponent } from './pages/admin-register/admin-register.co
 import { MessageComponent } from './dashboard/message/message.component';
 import { SendedmsgComponent } from './dashboard/sendedmsg/sendedmsg.component';
 import { IncommingmsgComponent } from './dashboard/incommingmsg/incommingmsg.component';
+import { PaymentSuccessComponent } from './pages/payment-success/payment-success.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { IncommingmsgComponent } from './dashboard/incommingmsg/incommingmsg.com
     AdminRegisterComponent,
     MessageComponent,
     SendedmsgComponent,
-    IncommingmsgComponent
+    IncommingmsgComponent,
+    PaymentSuccessComponent
   ],
   imports: [
     BrowserModule,

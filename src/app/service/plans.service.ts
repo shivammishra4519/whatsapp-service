@@ -18,4 +18,11 @@ export class PlansService {
     return this.http.post(`${this.url}plan/get`, {},{ withCredentials: true });
   }
 
+  buyPlan(data:any): Observable<any> {
+    return this.http.post(`${this.url}plan/buy`, data,{ withCredentials: true });
+  }
+  verfiyPayment(data:any): Observable<any> {
+    return this.http.post(`${this.url}plan/verify/payment`, data,{ withCredentials: true });
+  }
+
 }
