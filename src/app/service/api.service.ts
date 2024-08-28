@@ -38,8 +38,13 @@ url=env.url
   adminRegister(data:any):Observable<any>{
     return this.http.post(`${this.url}user/admin/register`, data,{ withCredentials: true })
   }
+
   logout():Observable<any>{
     return this.http.post(`${this.url}user/logout`, {},{ withCredentials: true })
+  }
+
+  getAllUser():Observable<any>{
+    return this.http.post(`${this.url}user/get`, {},{ withCredentials: true })
   }
 
 

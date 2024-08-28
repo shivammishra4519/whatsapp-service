@@ -1,0 +1,35 @@
+.colorful-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 18px;
+    text-align: left;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .colorful-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+  }
+  
+  .colorful-table th, .colorful-table td {
+    padding: 12px 15px;
+  }
+  
+  .colorful-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+  
+  .colorful-table tbody tr.even-row {
+    background-color: #f3f3f3;
+  }
+  
+  .colorful-table tbody tr.odd-row {
+    background-color: #d1e7dd;
+  }
+  
+  .colorful-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+  }
+  

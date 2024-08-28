@@ -1,0 +1,27 @@
+.payment-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .payment-table th, .payment-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .payment-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }
+  
+  .payment-table tr.status-success {
+    background-color: #d4edda;
+  }
+  
+  .payment-table tr.status-fail {
+    background-color: #f8d7da;
+  }
+  
+  .payment-table tr.status-pending {
+    background-color: #fff3cd;
+  }
+  

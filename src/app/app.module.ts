@@ -22,6 +22,10 @@ import { MessageComponent } from './dashboard/message/message.component';
 import { SendedmsgComponent } from './dashboard/sendedmsg/sendedmsg.component';
 import { IncommingmsgComponent } from './dashboard/incommingmsg/incommingmsg.component';
 import { PaymentSuccessComponent } from './pages/payment-success/payment-success.component';
+import { UserlistComponent } from './dashboard/userlist/userlist.component';
+import { PlanListComponent } from './dashboard/plan-list/plan-list.component';
+import { ActivePlansComponent } from './dashboard/active-plans/active-plans.component';
+import { PaymentRequestComponent } from './dashboard/payment-request/payment-request.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +44,11 @@ import { PaymentSuccessComponent } from './pages/payment-success/payment-success
     MessageComponent,
     SendedmsgComponent,
     IncommingmsgComponent,
-    PaymentSuccessComponent
+    PaymentSuccessComponent,
+    UserlistComponent,
+    PlanListComponent,
+    ActivePlansComponent,
+    PaymentRequestComponent
   ],
   imports: [
     BrowserModule,

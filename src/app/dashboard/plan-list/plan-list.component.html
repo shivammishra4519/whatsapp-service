@@ -1,0 +1,30 @@
+<table class="colorful-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Plan Name</th>
+        <th>Price</th>
+        <th>Duration (Days)</th>
+        <th>Description</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let plan of plans; let i = index" [ngClass]="{'even-row': i % 2 === 0, 'odd-row': i % 2 !== 0}">
+        <td>{{ i + 1 }}</td>
+        <td>{{ plan.name }}</td>
+        <td>{{ plan.price }}</td>
+        <td>{{ plan.duration }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let desc of plan.description">{{ desc }}</li>
+          </ul>
+        </td>
+        <td >
+            <button class="btn btn-danger" style="margin-right: 5px;" (click)="delete(plan._id)">Delete</button>
+            <button class="btn btn-light">Edit</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

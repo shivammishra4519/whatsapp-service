@@ -13,6 +13,9 @@
   <a routerLink="/dashboard/incomming-msg"><i class="fas fa-envelope"></i> <span>Incomming Messages</span></a>
   <a routerLink="/dashboard/plans"><i class="fas fa-cog"></i> <span>Plans</span></a>
   <a routerLink="/dashboard/add-plan" *ngIf="auth.isAdmin()"><i class="fas fa-cog"></i> <span>Add Plan</span></a>
+  <a routerLink="/dashboard/user-list" *ngIf="auth.isAdmin()"><i class="fas fa-cog"></i> <span>User List</span></a>
+  <a routerLink="/dashboard/Plan-list" *ngIf="auth.isAdmin()"><i class="fas fa-cog"></i> <span>Plan List</span></a>
+  <a routerLink="/dashboard/payments-request" *ngIf="auth.isAdmin()"><i class="fas fa-cog"></i> <span>Payments Request</span></a>
   <div class="btn-div" >
     <button class="btn btn-success" (click)="logout()">Logout</button>
   </div>

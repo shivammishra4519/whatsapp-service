@@ -1,0 +1,27 @@
+<table class="payment-table">
+    <thead>
+      <tr>
+        <th>Amount</th>
+        <th>Customer Mobile</th>
+        <th>Date</th>
+        <th>Order ID</th>
+        <th>Redirect URL</th>
+        <th>Remark 1</th>
+        <th>Status</th>
+        <th>UTR</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let payment of payments" [ngClass]="getStatusClass(payment.status)">
+        <td>{{ payment.amount }}</td>
+        <td>{{ payment.customer_mobile }}</td>
+        <td>{{ payment.date | date: 'short' }}</td>
+        <td>{{ payment.order_id }}</td>
+        <td>{{ payment.redirect_url }}</td>
+        <td>{{ payment.remark1 }}</td>
+        <td>{{ payment.status }}</td>
+        <td>{{ payment.utr }}</td>
+      </tr>
+    </tbody>
+  </table>
+  

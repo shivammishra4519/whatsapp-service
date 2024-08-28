@@ -16,6 +16,9 @@ import { MessageComponent } from './dashboard/message/message.component';
 import { SendedmsgComponent } from './dashboard/sendedmsg/sendedmsg.component';
 import { IncommingmsgComponent } from './dashboard/incommingmsg/incommingmsg.component';
 import { PaymentSuccessComponent } from './pages/payment-success/payment-success.component';
+import { UserlistComponent } from './dashboard/userlist/userlist.component';
+import { PlanListComponent } from './dashboard/plan-list/plan-list.component';
+import { PaymentRequestComponent } from './dashboard/payment-request/payment-request.component';
 
 const routes: Routes = [
   {path:"home",component:HomeComponent},
@@ -31,6 +34,9 @@ const routes: Routes = [
     {path:"outgoing-msg",component:SendedmsgComponent},
     {path:"incomming-msg",component:IncommingmsgComponent},
     {path:"add-plan",component:AddPlanComponent,canActivate:[adminAuthGuard]},
+    {path:"user-list",component:UserlistComponent,canActivate:[adminAuthGuard]},
+    {path:"Plan-list",component:PlanListComponent,canActivate:[adminAuthGuard]},
+    {path:"payments-request",component:PaymentRequestComponent,canActivate:[adminAuthGuard]},
   ],canActivate: [authGuard] },
   {path:"payment-success",component:PaymentSuccessComponent},
 ];
