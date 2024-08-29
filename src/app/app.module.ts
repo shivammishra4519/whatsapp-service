@@ -26,6 +26,7 @@ import { UserlistComponent } from './dashboard/userlist/userlist.component';
 import { PlanListComponent } from './dashboard/plan-list/plan-list.component';
 import { ActivePlansComponent } from './dashboard/active-plans/active-plans.component';
 import { PaymentRequestComponent } from './dashboard/payment-request/payment-request.component';
+import { ActivePlanComponent } from './dashboard/active-plan/active-plan.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { PaymentRequestComponent } from './dashboard/payment-request/payment-req
     UserlistComponent,
     PlanListComponent,
     ActivePlansComponent,
-    PaymentRequestComponent
+    PaymentRequestComponent,
+    ActivePlanComponent
   ],
   imports: [
     BrowserModule,

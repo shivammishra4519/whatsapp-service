@@ -1,1 +1,36 @@
-<p>ip-whitelist works!</p>
+<form [formGroup]="ipForm" (ngSubmit)="onSubmit()">
+    <div class="input-group custom-input-group">
+      <input 
+        type="text" 
+        class="form-control" 
+        placeholder="Enter IP address" 
+        formControlName="ipAddress" 
+        aria-label="IP Address">
+      <button class="btn btn-primary" type="submit">Submit</button>
+    </div>
+    <div *ngIf="ipForm.controls['ipAddress'].invalid && ipForm.controls['ipAddress'].touched" class="text-danger mt-2">
+      Please enter a valid IP address.
+    </div>
+  </form>
+
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>IP Address</th>
+        <th>Token</th>
+        <th>Timestamp</th>
+        <!-- <th>Username</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data">
+        <td>{{ item.ipAddress }}</td>
+        <td>{{ item.encodedData }}</td>
+        <td>{{ item.timestamp  | date:'medium' }}</td>
+        <!-- <td>{{ item.username }}</td> -->
+      </tr>
+    </tbody>
+  </table>
+  
+  

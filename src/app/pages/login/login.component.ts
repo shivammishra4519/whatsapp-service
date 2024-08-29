@@ -22,7 +22,7 @@ export class LoginComponent {
     this.service.userLogin(this.loginForm.value).subscribe({
       next:data=>{
        
-        this.toastr.success("Logged in successfully");
+        this.toastr.success("Logged in successfully",'Success');
         this.router.navigate(['/dashboard'])
       },
       error:err=>{

@@ -35,4 +35,9 @@ export class PlansService {
   paymentRequest(): Observable<any> {
     return this.http.post(`${this.url}payment/requests`, {},{ withCredentials: true });
   }
+
+  getActivePlans(): Observable<any> {
+    return this.http.post(`${this.url}plan/active/plans`, {},{ withCredentials: true });
+  }
+
 }

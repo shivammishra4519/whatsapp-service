@@ -1,1 +1,26 @@
-<p>active-plans works!</p>
+<div class="row">
+    <div class="col-md-4" *ngFor="let user of users">
+      <div class="card mb-4 shadow-sm custom-card">
+        <div class="card-body">
+          <h5 class="card-title username">{{ user.username }}</h5>
+          <p class="plan-id">Plan ID: {{ user.plans[0].plan._id }}</p>
+          <p class="utr">UTR: {{ user.plans[0].utr }}</p>
+          <p class="timestamp">Timestamp: {{ user.plans[0].timestamp | date:'medium' }}</p>
+          <p class="expiry-date">Expiry Date: {{ calculateExpiryDate(user.plans[0].timestamp, user.plans[0].plan.duration) | date:'medium' }}</p>
+          <hr>
+          <div *ngFor="let plan of user.plans">
+            <h6 class="card-subtitle plan-name mb-2 text-muted">{{ plan.plan.name }}</h6>
+            <p class="card-text plan-details">
+              Price: ${{ plan.plan.price }}<br>
+              Duration: {{ plan.plan.duration }} days
+            </p>
+            <p class="description-title">Description:</p>
+            <ul class="plan-description">
+              <li *ngFor="let desc of plan.plan.description">{{ desc }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

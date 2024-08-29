@@ -25,7 +25,10 @@ export class PaymentSuccessComponent {
         this.data = JSON.parse(decodedString);
       }
     });
-    this.callApi()
+    if(this.data){
+      this.callApi()
+    }
+   
   }
 
 
