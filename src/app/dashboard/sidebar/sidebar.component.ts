@@ -11,7 +11,21 @@ import { AuthService } from '../../service/auth.service';
 export class SidebarComponent {
   isClosed = false;
   isOpen = false;
-constructor(private service:ApiService,private router:Router,public auth:AuthService){}
+  role: string = '';
+
+  constructor(
+    private service: ApiService,
+    private router: Router,
+    public auth: AuthService
+  ) {}
+
+  ngOnInit(): void {
+    this.auth.checkRole().subscribe(role => {
+      this.role = role;
+     
+    });
+  }
+
   toggleNav() {
     this.isClosed = !this.isClosed;
     if (window.innerWidth <= 768) {
@@ -19,11 +33,11 @@ constructor(private service:ApiService,private router:Router,public auth:AuthSer
     }
   }
 
-  logout(){
+  logout() {
     this.service.logout().subscribe({
-      next:data=>{
-this.router.navigate(['/login'])
+      next: data => {
+        this.router.navigate(['/login']);
       }
-    })
+    });
   }
 }

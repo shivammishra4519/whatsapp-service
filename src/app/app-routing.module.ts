@@ -20,6 +20,7 @@ import { UserlistComponent } from './dashboard/userlist/userlist.component';
 import { PlanListComponent } from './dashboard/plan-list/plan-list.component';
 import { PaymentRequestComponent } from './dashboard/payment-request/payment-request.component';
 import { ActivePlansComponent } from './dashboard/active-plans/active-plans.component';
+import { ActivePlanComponent } from './dashboard/active-plan/active-plan.component';
 
 const routes: Routes = [
   {path:"home",component:HomeComponent},
@@ -34,6 +35,7 @@ const routes: Routes = [
     {path:"message",component:MessageComponent},
     {path:"outgoing-msg",component:SendedmsgComponent},
     {path:"incomming-msg",component:IncommingmsgComponent},
+    {path:"current-plan",component:ActivePlanComponent},
     {path:"add-plan",component:AddPlanComponent,canActivate:[adminAuthGuard]},
     {path:"user-list",component:UserlistComponent,canActivate:[adminAuthGuard]},
     {path:"Plan-list",component:PlanListComponent,canActivate:[adminAuthGuard]},

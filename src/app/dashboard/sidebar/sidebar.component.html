@@ -8,15 +8,16 @@
   <a routerLink="/dashboard/home"><img src="../../../assets/house-solid.svg" alt="" height="40px" width="40px"> <span>Home</span></a>
   <a routerLink="/dashboard/whatsapp-login"><i class="fas fa-chart-line"></i> <span>Login Whatsapp</span></a>
   <a routerLink="/dashboard/ip-whitelist"><i class="fas fa-user"></i> <span>Ip Whitelist</span></a>
-  <a routerLink="/dashboard/message"><i class="fas fa-envelope"></i> <span>Messages</span></a>
-  <a routerLink="/dashboard/outgoing-msg"><i class="fas fa-envelope"></i> <span>Outgoing Messages</span></a>
-  <a routerLink="/dashboard/incomming-msg"><i class="fas fa-envelope"></i> <span>Incomming Messages</span></a>
+  <a routerLink="/dashboard/message" *ngIf="role == 'user' "><i class="fas fa-envelope"></i> <span>Messages</span></a>
+  <a routerLink="/dashboard/outgoing-msg" *ngIf="role == 'user' " ><i class="fas fa-envelope"></i> <span>Outgoing Messages</span></a>
+  <a routerLink="/dashboard/incomming-msg" *ngIf="role == 'user' "><i class="fas fa-envelope"></i> <span>Incomming Messages</span></a>
+  <a routerLink="/dashboard/current-plan" *ngIf="role == 'user' "><i class="fas fa-envelope"></i> <span>Current Plan</span></a>
   <a routerLink="/dashboard/plans"><i class="fas fa-cog"></i> <span>Plans</span></a>
-  <a routerLink="/dashboard/add-plan" *ngIf="auth.isAdmin()"><i class="fas fa-cog"></i> <span>Add Plan</span></a>
-  <a routerLink="/dashboard/user-list" *ngIf="auth.isAdmin()"><i class="fas fa-cog"></i> <span>User List</span></a>
-  <a routerLink="/dashboard/Plan-list" *ngIf="auth.isAdmin()"><i class="fas fa-cog"></i> <span>Plan List</span></a>
-  <a routerLink="/dashboard/payments-request" *ngIf="auth.isAdmin()"><i class="fas fa-cog"></i> <span>Payments Request</span></a>
-  <a routerLink="/dashboard/active-plans" *ngIf="auth.isAdmin()"><i class="fas fa-cog"></i> <span>Active Plan</span></a>
+  <a routerLink="/dashboard/add-plan" *ngIf="role == 'admin' "><i class="fas fa-cog"></i> <span>Add Plan</span></a>
+  <a routerLink="/dashboard/user-list" *ngIf="role == 'admin' "><i class="fas fa-cog"></i> <span>User List</span></a>
+  <a routerLink="/dashboard/Plan-list" *ngIf="role == 'admin' "><i class="fas fa-cog"></i> <span>Plan List</span></a>
+  <a routerLink="/dashboard/payments-request" *ngIf="role == 'admin' "><i class="fas fa-cog"></i> <span>Payments Request</span></a>
+  <a routerLink="/dashboard/active-plans" *ngIf="role == 'admin' "><i class="fas fa-cog"></i> <span>Active Plan</span></a>
   <div class="btn-div" >
     <button class="btn btn-success" (click)="logout()">Logout</button>
   </div>

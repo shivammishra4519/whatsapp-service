@@ -40,4 +40,8 @@ export class PlansService {
     return this.http.post(`${this.url}plan/active/plans`, {},{ withCredentials: true });
   }
 
+  getCurrentPlan(): Observable<any> {
+    return this.http.post(`${this.url}plan/active/plan/user`, {},{ withCredentials: true });
+  }
+
 }

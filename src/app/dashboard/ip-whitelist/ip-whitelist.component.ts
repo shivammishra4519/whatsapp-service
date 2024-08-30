@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IpService } from '../../service/ip.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-ip-whitelist',
@@ -9,7 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class IpWhitelistComponent {
   
-  constructor(private ipService:IpService,private fb: FormBuilder){
+  constructor(private ipService:IpService,private fb: FormBuilder,private toastr:ToastrService){
     this.savedToken()
   }
   inputValue: string = '';
@@ -25,15 +26,16 @@ export class IpWhitelistComponent {
     if (this.ipForm.valid) {
     this.ipService.whiteListIp(this.ipForm.value).subscribe({
       next:data=>{
-        console.log(data);
+     this.toastr.success('IP Approved Successfully','success')
+        this.savedToken();
       },
       error:err=>{
-        console.log(err);
+        this.toastr.error(err.error.message,'Error')
       }
     })
       // Perform your desired action here
     } else {
-      console.log('Invalid IP Address');
+      this.toastr.error('Invalid IP Address','Error')
     }
   }
 
@@ -41,7 +43,7 @@ export class IpWhitelistComponent {
     this.ipService.getTokens().subscribe({
       next:data=>{
         console.log(data)
-        // this.data=data
+        this.data=data
       },
       error:err=>{
         console.log(err)
