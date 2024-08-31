@@ -17,7 +17,12 @@ export class SidebarComponent {
     private service: ApiService,
     private router: Router,
     public auth: AuthService
-  ) {}
+  ) {
+    this.auth.checkRole().subscribe(role => {
+      this.role = role;
+     console.log("role",role)
+    });
+  }
 
   ngOnInit(): void {
     this.auth.checkRole().subscribe(role => {
