@@ -22,7 +22,7 @@ export class SidebarComponent {
   ngOnInit(): void {
     this.auth.checkRole().subscribe(role => {
       this.role = role;
-     
+     console.log(role)
     });
   }
 
