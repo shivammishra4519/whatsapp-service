@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { env } from '../environment';
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -60,6 +60,11 @@ export class AuthService {
       map(response => {
         this.role = response.role;
         return this.role;
+      }),
+      catchError(error => {
+        console.error('Error occurred while fetching role:', error);
+        // You can either rethrow the error or return a fallback value, e.g., 'guest'
+        return of('guest'); // Return 'guest' as a default role if an error occurs
       })
     );
   }
