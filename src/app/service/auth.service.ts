@@ -64,7 +64,7 @@ export class AuthService {
       catchError(error => {
         console.error('Error occurred while fetching role:', error);
         // You can either rethrow the error or return a fallback value, e.g., 'guest'
-        return of('guest'); // Return 'guest' as a default role if an error occurs
+        return of('user'); // Return 'guest' as a default role if an error occurs
       })
     );
   }
