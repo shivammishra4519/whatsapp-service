@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PlansService } from '../../service/plans.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-plans',
@@ -8,7 +9,7 @@ import { PlansService } from '../../service/plans.service';
 })
 export class PlansComponent {
   plans: any[] = [];
-  constructor(private service: PlansService) {
+  constructor(private service: PlansService,private tostr:ToastrService) {
     service.getAllPlan().subscribe({
       next:data=>{
         this.plans=data;
@@ -39,5 +40,16 @@ export class PlansComponent {
       alert('Error Processing Payment')
     }
   })
+  }
+
+  getFreeTrail(){
+    this.service.getFreePlan().subscribe({
+      next:data=>{
+        this.tostr.success("Plan Updated Successfully",'Success')
+      },
+      error:err=>{
+        this.tostr.error(err.error.message,'Error')
+      }
+    })
   }
 }

@@ -1,0 +1,16 @@
+<div class="form-container">
+    <form (ngSubmit)="onSubmit()" class="form-row">
+      <div class="input-group">
+        <label for="input1">Message:</label>
+        <input type="text" id="input1" [(ngModel)]="message" name="input1" required />
+      </div>
+  
+      <div class="input-group">
+        <label for="input2">Answer:</label>
+        <input type="text" id="input2" [(ngModel)]="answer" name="input2" required />
+      </div>
+  
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+  </div>
+  

@@ -24,4 +24,8 @@ export class MessageService {
   incommingMessages(): Observable<any> {
     return this.http.post(`${this.url}message/incomming`, {},{ withCredentials: true });
   }
+
+  addAnswer(data:any): Observable<any> {
+    return this.http.post(`${this.url}autoreply/answer`, data,{ withCredentials: true });
+  }
 }

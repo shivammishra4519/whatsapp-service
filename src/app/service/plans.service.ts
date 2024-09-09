@@ -13,6 +13,9 @@ export class PlansService {
   addPlan(data: any): Observable<any> {
     return this.http.post(`${this.url}plan/add`, data,{ withCredentials: true });
   }
+  addFreeTrail(data: any): Observable<any> {
+    return this.http.post(`${this.url}plan/add/free`, data,{ withCredentials: true });
+  }
 
   getAllPlan(): Observable<any> {
     return this.http.post(`${this.url}plan/get`, {},{ withCredentials: true });
@@ -42,6 +45,9 @@ export class PlansService {
 
   getCurrentPlan(): Observable<any> {
     return this.http.post(`${this.url}plan/active/plan/user`, {},{ withCredentials: true });
+  }
+  getFreePlan(): Observable<any> {
+    return this.http.post(`${this.url}plan/get/plan/free`, {},{ withCredentials: true });
   }
 
 }

@@ -21,6 +21,8 @@ import { PlanListComponent } from './dashboard/plan-list/plan-list.component';
 import { PaymentRequestComponent } from './dashboard/payment-request/payment-request.component';
 import { ActivePlansComponent } from './dashboard/active-plans/active-plans.component';
 import { ActivePlanComponent } from './dashboard/active-plan/active-plan.component';
+import { TrailPlanComponent } from './pages/trail-plan/trail-plan.component';
+import { AutoreplyComponent } from './pages/autoreply/autoreply.component';
 
 const routes: Routes = [
   {path:"home",component:HomeComponent},
@@ -36,7 +38,9 @@ const routes: Routes = [
     {path:"outgoing-msg",component:SendedmsgComponent},
     {path:"incomming-msg",component:IncommingmsgComponent},
     {path:"current-plan",component:ActivePlanComponent},
+    {path:"auto-reply",component:AutoreplyComponent},
     {path:"add-plan",component:AddPlanComponent,canActivate:[adminAuthGuard]},
+    {path:"free-trail",component:TrailPlanComponent,canActivate:[adminAuthGuard]},
     {path:"user-list",component:UserlistComponent,canActivate:[adminAuthGuard]},
     {path:"Plan-list",component:PlanListComponent,canActivate:[adminAuthGuard]},
     {path:"payments-request",component:PaymentRequestComponent,canActivate:[adminAuthGuard]},

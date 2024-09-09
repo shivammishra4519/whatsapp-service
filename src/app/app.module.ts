@@ -27,6 +27,8 @@ import { PlanListComponent } from './dashboard/plan-list/plan-list.component';
 import { ActivePlansComponent } from './dashboard/active-plans/active-plans.component';
 import { PaymentRequestComponent } from './dashboard/payment-request/payment-request.component';
 import { ActivePlanComponent } from './dashboard/active-plan/active-plan.component';
+import { TrailPlanComponent } from './pages/trail-plan/trail-plan.component';
+import { AutoreplyComponent } from './pages/autoreply/autoreply.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { ActivePlanComponent } from './dashboard/active-plan/active-plan.compone
     PlanListComponent,
     ActivePlansComponent,
     PaymentRequestComponent,
-    ActivePlanComponent
+    ActivePlanComponent,
+    TrailPlanComponent,
+    AutoreplyComponent
   ],
   imports: [
     BrowserModule,
