@@ -17,8 +17,12 @@ constructor(private mService:MessageService,private toastr:ToastrService){}
         next:data=>{
           this.toastr.success("message send successfully")
         },error:err=>{
-          console.log(err)
+        if(err.error && err.error.message){
           this.toastr.error(err.error.message)
+        }else{
+          this.toastr.error(err.error.error)
+        }
+          
         }
       })
     } else {
@@ -45,7 +49,12 @@ constructor(private mService:MessageService,private toastr:ToastrService){}
       this.toastr.success("message send successfully")
     },
     error:err=>{
-      this.toastr.error(err.error.message)
+      if(err.error && err.error.message){
+        this.toastr.error(err.error.message)
+      }else{
+        this.toastr.error(err.error.error)
+      }
+  
     }
    })
   }
