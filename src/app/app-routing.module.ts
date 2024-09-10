@@ -23,6 +23,7 @@ import { ActivePlansComponent } from './dashboard/active-plans/active-plans.comp
 import { ActivePlanComponent } from './dashboard/active-plan/active-plan.component';
 import { TrailPlanComponent } from './pages/trail-plan/trail-plan.component';
 import { AutoreplyComponent } from './pages/autoreply/autoreply.component';
+import { WhitlistedipComponent } from './pages/whitlistedip/whitlistedip.component';
 
 const routes: Routes = [
   {path:"home",component:HomeComponent},
@@ -40,6 +41,7 @@ const routes: Routes = [
     {path:"current-plan",component:ActivePlanComponent},
     {path:"auto-reply",component:AutoreplyComponent},
     {path:"add-plan",component:AddPlanComponent,canActivate:[adminAuthGuard]},
+    {path:"white-listip",component:WhitlistedipComponent,canActivate:[adminAuthGuard]},
     {path:"free-trail",component:TrailPlanComponent,canActivate:[adminAuthGuard]},
     {path:"user-list",component:UserlistComponent,canActivate:[adminAuthGuard]},
     {path:"Plan-list",component:PlanListComponent,canActivate:[adminAuthGuard]},

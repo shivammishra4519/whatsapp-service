@@ -17,4 +17,8 @@ export class IpService {
   getTokens(): Observable<any> {
     return this.http.post(`${this.url}ip/get`, {},{ withCredentials: true });
   }
+
+  getAllTokens(): Observable<any> {
+    return this.http.post(`${this.url}ip/get/all`, {},{ withCredentials: true });
+  }
 }

@@ -29,6 +29,7 @@ import { PaymentRequestComponent } from './dashboard/payment-request/payment-req
 import { ActivePlanComponent } from './dashboard/active-plan/active-plan.component';
 import { TrailPlanComponent } from './pages/trail-plan/trail-plan.component';
 import { AutoreplyComponent } from './pages/autoreply/autoreply.component';
+import { WhitlistedipComponent } from './pages/whitlistedip/whitlistedip.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { AutoreplyComponent } from './pages/autoreply/autoreply.component';
     PaymentRequestComponent,
     ActivePlanComponent,
     TrailPlanComponent,
-    AutoreplyComponent
+    AutoreplyComponent,
+    WhitlistedipComponent
   ],
   imports: [
     BrowserModule,
