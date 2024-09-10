@@ -14,3 +14,25 @@
     </form>
   </div>
   
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Message</th>
+          <th>Answer</th>
+          <th>Timestamp</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of dataArray">
+          <td>{{ item.message }}</td>
+          <td>{{ item.answer }}</td>
+          <td>{{ item.timestamp | date:'medium' }}</td>
+          <td > <button class="btn btn-danger" style="margin-left: 5px;" (click)="delete(item)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

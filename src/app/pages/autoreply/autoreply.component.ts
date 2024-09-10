@@ -10,7 +10,14 @@ import { ToastrService } from 'ngx-toastr';
 export class AutoreplyComponent {
   answer: string = '';
   message: string = '';
-  constructor(private service: MessageService, private tostr: ToastrService) { }
+  dataArray:any[]=[]
+  constructor(private service: MessageService, private tostr: ToastrService) {
+service.getAllAnswer().subscribe({
+  next:data=>{
+    this.dataArray=data.answers;
+  }
+})
+   }
 
   onSubmit() {
     this.service.addAnswer({ answer: this.answer, message: this.message }).subscribe({
@@ -18,10 +25,31 @@ export class AutoreplyComponent {
         this.tostr.success("Answer Updated Successfully", 'Success');
         this.answer=''
         this.message=''
+        this.service.getAllAnswer().subscribe({
+          next:data=>{
+            this.dataArray=data.answers;
+          }
+        })
       },
       error:err=>{
         this.tostr.error(err.error.message,'Error')
       }
     })
+  }
+
+  delete(data:any){
+this.service.deleteMessage(data).subscribe({
+  next:data=>{
+    this.tostr.success("Message Deleted Successfully",'Success');
+    this.service.getAllAnswer().subscribe({
+      next:data=>{
+        this.dataArray=data.answers;
+      }
+    })
+  },
+  error:err=>{
+    this.tostr.error(err.error.message,'Error')
+  }
+})
   }
 }

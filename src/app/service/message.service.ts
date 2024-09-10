@@ -28,4 +28,10 @@ export class MessageService {
   addAnswer(data:any): Observable<any> {
     return this.http.post(`${this.url}autoreply/answer`, data,{ withCredentials: true });
   }
+  getAllAnswer(): Observable<any> {
+    return this.http.post(`${this.url}autoreply/get`, {},{ withCredentials: true });
+  }
+  deleteMessage(data:any): Observable<any> {
+    return this.http.post(`${this.url}autoreply/delete`, data,{ withCredentials: true });
+  }
 }
