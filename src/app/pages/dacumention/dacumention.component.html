@@ -1,0 +1,94 @@
+<div class="api-doc-container">
+    <h1>API Documentation: Send Single WhatsApp Message</h1>
+
+    <section class="endpoint">
+        <h2>Endpoint</h2>
+        <p><strong>GET</strong> http://localhost:3260/api/single/message</p>
+    </section>
+
+    <section class="description">
+        <h2>Description</h2>
+        <p>This API sends a single WhatsApp message to the specified number using an authentication token. The request
+            must contain a valid token, number, and message as query parameters.</p>
+    </section>
+
+    <section class="query-parameters">
+        <h2>Query Parameters</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Required</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>token</td>
+                    <td>string</td>
+                    <td>A valid base64-encoded token used for authentication</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>number</td>
+                    <td>string</td>
+                    <td>The WhatsApp phone number in international format without the `+`</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>message</td>
+                    <td>string</td>
+                    <td>The message to send</td>
+                    <td>Yes</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="example-request">
+        <h2>Example Request</h2>
+        <pre>
+GET http://localhost:3260/api/single/message?token=eyJpcCI6IjE2OC42Ni4xMi4yIiwidGsiOiJJSTM0SU0ifQ==&number=9335792497&message=hello
+        </pre>
+    </section>
+
+    <section class="response">
+        <h2>Success Response</h2>
+        <p>Status: <strong>200 OK</strong></p>
+        <pre>
+Response:
+  success: true
+  response:
+    id: "message-id"
+    ack: "1"
+    message: "Message sent successfully"
+    number: "9335792497"
+    timestamp: "2024-09-10T12:45:30.000Z"
+        </pre>
+    </section>
+
+    <section class="error-responses">
+        <h2>Error Responses</h2>
+        <h3>Invalid Token</h3>
+        <p>Status: <strong>400 Bad Request</strong></p>
+        <pre>
+Response:
+  message: "Invalid token"
+        </pre>
+
+        <h3>Missing Parameters</h3>
+        <p>Status: <strong>400 Bad Request</strong></p>
+        <pre>
+Response:
+  message: "Number cannot be blank"
+        </pre>
+
+        <h3>Internal Server Error</h3>
+        <p>Status: <strong>500 Internal Server Error</strong></p>
+        <pre>
+Response:
+  message: "Internal Server Error"
+        </pre>
+    </section>
+</div>

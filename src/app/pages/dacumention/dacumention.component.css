@@ -1,0 +1,70 @@
+.api-doc-container {
+    font-family: Arial, sans-serif;
+    background-color: #f7f9fc;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 800px;
+    margin: auto;
+}
+
+h1, h2, h3 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+h1 {
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+    font-size: 24px;
+}
+
+.endpoint-section, .description-section, .query-parameters-section, .example-request-section, .response-section, .error-response-section {
+    margin-bottom: 20px;
+}
+
+.api-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.api-table th, .api-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+}
+
+.api-table th {
+    background-color: #3498db;
+    color: white;
+}
+
+.api-table td {
+    background-color: #f2f2f2;
+}
+
+.endpoint-url {
+    font-family: monospace;
+    background-color: #ecf0f1;
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+pre {
+    background-color: #ecf0f1;
+    padding: 10px;
+    border-radius: 4px;
+    overflow: auto;
+}
+
+code {
+    font-family: monospace;
+    color: #e74c3c;
+}
+
+.error-response-section h3 {
+    color: #e74c3c;
+}
+
+.response-section pre, .error-response-section pre {
+    background-color: #f4f6f8;
+}

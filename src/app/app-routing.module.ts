@@ -24,6 +24,7 @@ import { ActivePlanComponent } from './dashboard/active-plan/active-plan.compone
 import { TrailPlanComponent } from './pages/trail-plan/trail-plan.component';
 import { AutoreplyComponent } from './pages/autoreply/autoreply.component';
 import { WhitlistedipComponent } from './pages/whitlistedip/whitlistedip.component';
+import { DacumentionComponent } from './pages/dacumention/dacumention.component';
 
 const routes: Routes = [
   {path:"home",component:HomeComponent},
@@ -49,6 +50,7 @@ const routes: Routes = [
     {path:"active-plans",component:ActivePlansComponent,canActivate:[adminAuthGuard]},
   ],canActivate: [authGuard] },
   {path:"payment-success",component:PaymentSuccessComponent},
+  {path:"api-dacumention",component:DacumentionComponent},
 ];
 
 @NgModule({

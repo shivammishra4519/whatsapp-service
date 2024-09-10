@@ -30,6 +30,7 @@ import { ActivePlanComponent } from './dashboard/active-plan/active-plan.compone
 import { TrailPlanComponent } from './pages/trail-plan/trail-plan.component';
 import { AutoreplyComponent } from './pages/autoreply/autoreply.component';
 import { WhitlistedipComponent } from './pages/whitlistedip/whitlistedip.component';
+import { DacumentionComponent } from './pages/dacumention/dacumention.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { WhitlistedipComponent } from './pages/whitlistedip/whitlistedip.compone
     ActivePlanComponent,
     TrailPlanComponent,
     AutoreplyComponent,
-    WhitlistedipComponent
+    WhitlistedipComponent,
+    DacumentionComponent
   ],
   imports: [
     BrowserModule,
