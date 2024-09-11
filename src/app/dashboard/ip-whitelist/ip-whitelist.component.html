@@ -20,7 +20,7 @@
         <th>IP Address</th>
         <th>Token</th>
         <th>Timestamp</th>
-        <!-- <th>Username</th> -->
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
@@ -28,7 +28,7 @@
         <td>{{ item.ipAddress }}</td>
         <td>{{ item.encodedData }}</td>
         <td>{{ item.timestamp  | date:'medium' }}</td>
-        <!-- <td>{{ item.username }}</td> -->
+        <td><Button class="btn btn-danger" (click)="delete(item)">Delete</Button></td>
       </tr>
     </tbody>
   </table>

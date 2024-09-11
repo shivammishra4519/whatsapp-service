@@ -26,7 +26,7 @@ export class IpWhitelistComponent {
     if (this.ipForm.valid) {
     this.ipService.whiteListIp(this.ipForm.value).subscribe({
       next:data=>{
-     this.toastr.success('IP Approved Successfully','success')
+     this.toastr.success('IP Approved Successfully','Success')
         this.savedToken();
       },
       error:err=>{
@@ -42,11 +42,23 @@ export class IpWhitelistComponent {
   savedToken(){
     this.ipService.getTokens().subscribe({
       next:data=>{
-        console.log(data)
+       
         this.data=data
       },
       error:err=>{
         console.log(err)
+      }
+    })
+  }
+
+  delete(data:any){
+    this.ipService.deleteIp(data).subscribe({
+      next:data=>{
+        this.toastr.success("Ip deleted Successfully",'Sucess');
+        this.savedToken()
+      },
+      error:err=>{
+        this.toastr.error(err.error.message)
       }
     })
   }

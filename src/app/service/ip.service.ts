@@ -21,4 +21,10 @@ export class IpService {
   getAllTokens(): Observable<any> {
     return this.http.post(`${this.url}ip/get/all`, {},{ withCredentials: true });
   }
+
+  deleteIp(data:any): Observable<any> {
+    return this.http.post(`${this.url}ip/delete`, data,{ withCredentials: true });
+  }
+
+
 }
