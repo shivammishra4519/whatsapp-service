@@ -25,6 +25,7 @@ import { TrailPlanComponent } from './pages/trail-plan/trail-plan.component';
 import { AutoreplyComponent } from './pages/autoreply/autoreply.component';
 import { WhitlistedipComponent } from './pages/whitlistedip/whitlistedip.component';
 import { DacumentionComponent } from './pages/dacumention/dacumention.component';
+import { SendmediaComponent } from './pages/sendmedia/sendmedia.component';
 
 const routes: Routes = [
   {path:"home",component:HomeComponent},
@@ -41,6 +42,8 @@ const routes: Routes = [
     {path:"incomming-msg",component:IncommingmsgComponent},
     {path:"current-plan",component:ActivePlanComponent},
     {path:"auto-reply",component:AutoreplyComponent},
+    {path:"send-media",component:SendmediaComponent},
+    {path:"api-dacumention",component:DacumentionComponent},
     {path:"add-plan",component:AddPlanComponent,canActivate:[adminAuthGuard]},
     {path:"white-listip",component:WhitlistedipComponent,canActivate:[adminAuthGuard]},
     {path:"free-trail",component:TrailPlanComponent,canActivate:[adminAuthGuard]},
@@ -50,7 +53,7 @@ const routes: Routes = [
     {path:"active-plans",component:ActivePlansComponent,canActivate:[adminAuthGuard]},
   ],canActivate: [authGuard] },
   {path:"payment-success",component:PaymentSuccessComponent},
-  {path:"api-dacumention",component:DacumentionComponent},
+
 ];
 
 @NgModule({

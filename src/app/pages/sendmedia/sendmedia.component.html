@@ -1,0 +1,63 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow">
+          <div class="card-header bg-primary text-white text-center">
+            <h4>Upload Image or Video</h4>
+          </div>
+          <div class="card-body">
+            <form (ngSubmit)="onSubmit()" #uploadForm="ngForm">
+              <!-- WhatsApp Number -->
+              <div class="form-group mb-3">
+                <label for="whatsappNumber" class="form-label">WhatsApp Number</label>
+                <input
+                  type="text"
+                  id="whatsappNumber"
+                  class="form-control"
+                  placeholder="Enter WhatsApp Number"
+                  required
+                  [(ngModel)]="whatsappNumber"
+                  name="whatsappNumber"
+                />
+              </div>
+  
+              <!-- File Input (Image/Video) -->
+              <div class="form-group mb-3">
+                <label for="fileUpload" class="form-label">Upload Image or Video</label>
+                <div class="custom-file">
+                  <input
+                    type="file"
+                    class="custom-file-input"
+                    id="fileUpload"
+                    (change)="onFileChange($event)"
+                    accept="image/*,video/*"
+                    required
+                  />
+                  <label class="custom-file-label" for="fileUpload">Choose file</label>
+                </div>
+              </div>
+  
+              <!-- Preview -->
+              <div class="form-group mb-3" *ngIf="fileUrl">
+                <label class="form-label">Preview</label>
+                <div *ngIf="fileType.startsWith('image')">
+                  <img [src]="fileUrl" class="img-thumbnail" alt="Image Preview" />
+                </div>
+                <div *ngIf="fileType.startsWith('video')">
+                  <video [src]="fileUrl" class="w-100" controls></video>
+                </div>
+              </div>
+  
+              <!-- Submit Button -->
+              <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary btn-block" [disabled]="!uploadForm.form.valid">
+                  Send File
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

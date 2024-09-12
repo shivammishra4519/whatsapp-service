@@ -1,0 +1,21 @@
+/* Custom Styles for File Upload */
+.custom-file-input:focus ~ .custom-file-label {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  
+  .custom-file-input {
+    cursor: pointer;
+  }
+  
+  .img-thumbnail {
+    max-height: 300px;
+    object-fit: contain;
+    margin-bottom: 15px;
+  }
+  
+  video {
+    max-height: 300px;
+    margin-bottom: 15px;
+  }
+  

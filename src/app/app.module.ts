@@ -31,6 +31,7 @@ import { TrailPlanComponent } from './pages/trail-plan/trail-plan.component';
 import { AutoreplyComponent } from './pages/autoreply/autoreply.component';
 import { WhitlistedipComponent } from './pages/whitlistedip/whitlistedip.component';
 import { DacumentionComponent } from './pages/dacumention/dacumention.component';
+import { SendmediaComponent } from './pages/sendmedia/sendmedia.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { DacumentionComponent } from './pages/dacumention/dacumention.component'
     TrailPlanComponent,
     AutoreplyComponent,
     WhitlistedipComponent,
-    DacumentionComponent
+    DacumentionComponent,
+    SendmediaComponent
   ],
   imports: [
     BrowserModule,
