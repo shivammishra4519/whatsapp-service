@@ -42,7 +42,7 @@ export class SendmediaComponent {
     formData.append('number', this.whatsappNumber);
 
     // Make an HTTP POST request to your backend API
-    this.http.post('http://localhost:3260/api/send-media', formData,{ withCredentials: true }).subscribe({
+    this.http.post('http://62.72.56.135:3260/api/send-media', formData,{ withCredentials: true }).subscribe({
       next:data=>{
         this.toastr.success('Media sent successfully!')
       },error:err=>{
