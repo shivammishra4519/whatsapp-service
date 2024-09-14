@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-
+import { env } from '../../environment';
 @Component({
   selector: 'app-sendmedia',
   templateUrl: './sendmedia.component.html',
@@ -12,8 +12,10 @@ export class SendmediaComponent {
   file: File | null = null;
   fileUrl: any = null; // For preview
   fileType: string = ''; // To differentiate between image and video
-  
-  constructor(private http: HttpClient, private toastr:ToastrService ) {}
+  caption: string = ''; // New caption field
+  url = env.url;
+
+  constructor(private http: HttpClient, private toastr: ToastrService) {}
 
   // Method to handle file change and generate preview
   onFileChange(event: any) {
@@ -40,14 +42,16 @@ export class SendmediaComponent {
     const formData = new FormData();
     formData.append('file', this.file);
     formData.append('number', this.whatsappNumber);
+    formData.append('caption', this.caption);  // Append the caption
 
     // Make an HTTP POST request to your backend API
-    this.http.post('http://62.72.56.135:3260/api/send-media', formData,{ withCredentials: true }).subscribe({
-      next:data=>{
-        this.toastr.success('Media sent successfully!')
-      },error:err=>{
-        console.log(err)
+    this.http.post(`${this.url}api/send-media`, formData, { withCredentials: true }).subscribe({
+      next: (data) => {
+        this.toastr.success('Media sent successfully!');
+      },
+      error: (err) => {
+        console.log(err);
       }
-    }  );
+    });
   }
 }
