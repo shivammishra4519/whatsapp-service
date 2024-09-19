@@ -3,6 +3,7 @@ import { ApiService } from '../../service/api.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { interval, Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login-whatsapp',
@@ -15,7 +16,7 @@ export class LoginWhatsappComponent implements OnDestroy {
   private qrCodeSubscription: Subscription | undefined;
   public data: any;
 
-  constructor(private service: ApiService, private sanitizer: DomSanitizer) {}
+  constructor(private service: ApiService, private sanitizer: DomSanitizer,private toastr:ToastrService) {}
 
   callApi(): void {
     console.log("Generating QR Code...");
@@ -37,19 +38,19 @@ export class LoginWhatsappComponent implements OnDestroy {
   }
 
   private startPolling(): void {
-    console.log("Starting polling...");
+   
 
     this.pollingSubscription = interval(1000) // Interval of 1 second
       .pipe(
-        switchMap(() => this.service.checkStatus({ sessionId: "9335792497" }))
+        switchMap(() => this.service.checkStatus({}))
       )
       .subscribe(
         response => {
           this.data = response;
-          console.log('API data:', this.data);
-
+         this.toastr.success("You are connected in Successfully",'Sucesss');
+         this.qrCodeImage=null
           // Stop polling if a successful status is received
-          if (this.data?.status === 'ready') { // Adjust based on your response structure
+          if (this.data) { // Adjust based on your response structure
             console.log('Successful status received. Stopping polling.');
             this.stopPolling();
           }
