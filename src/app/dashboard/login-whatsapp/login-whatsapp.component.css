@@ -1,0 +1,49 @@
+/* session.component.css */
+.table-container {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 16px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+  }
+  
+  thead {
+    background: linear-gradient(135deg, #007bff, #00d084); /* Gradient background for header */
+    color: #fff;
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2; /* Alternating row colors */
+  }
+  
+  tr:hover {
+    background-color: #e0e0e0; /* Hover effect */
+  }
+  
+  td {
+    font-size: 14px;
+  }
+  

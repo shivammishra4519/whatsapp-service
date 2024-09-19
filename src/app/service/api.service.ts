@@ -53,4 +53,8 @@ url=env.url
   }
 
 
+  getSession():Observable<any>{
+    return this.http.post(`${this.url}user/get/sessions`, {},{ withCredentials: true })
+  }
+
 }

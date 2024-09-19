@@ -1,6 +1,36 @@
-<p>login-whatsapp works!</p>
+<!-- session.component.html -->
+<div class="table-container">
+  <h2>Session Details</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Session ID</th>
+        <th>Platform</th>
+        <th>Status</th>
+        <th>User ID</th>
+        <th>Username</th>
+        <th>Action</th>
+        <th>Login</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ sessionData.sessionId }}</td>
+        <td>{{ sessionData.platform }}</td>
+        <td>{{ sessionData.status }}</td>
+        <td>{{ sessionData.userId }}</td>
+        <td>{{ sessionData.username }}</td>
+        <td><button class="btn btn-info">check</button></td>
+        <td><button class="btn btn-success" (click)="callApi()">Login</button></td>
+      </tr>
+      <!-- Add more rows here as needed -->
+    </tbody>
+  </table>
+</div>
+
+
 <div *ngIf="qrCodeImage">
     <img [src]="qrCodeImage" alt="QR Code" />
   </div>
   
-<button class="btn btn-success" (click)="callApi()">click </button>
+<!-- <button class="btn btn-success" (click)="callApi()">click </button> -->
