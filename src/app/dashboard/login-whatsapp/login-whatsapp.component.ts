@@ -48,38 +48,71 @@ export class LoginWhatsappComponent implements OnDestroy {
    */
   callApi(): void {
     console.log("Generating QR Code...");
-    this.service.checkStatus({}).subscribe({
-      next:data=>{
-        this.toastr.success("You are all ready loggedin");
-      },
-      error:err=>{
-        this.qrCodeSubscription = this.service.loginWhatsapp({ sessionId: '9335792497' }).subscribe({
-          next: (blob) => {
-            if (blob && blob instanceof Blob) {
-              const url = window.URL.createObjectURL(blob);
-              this.qrCodeImage = this.sanitizer.bypassSecurityTrustUrl(url);
-              this.sessionData.qrCodeImage = this.qrCodeImage;
-              console.log('QR Code generated successfully',this.qrCodeImage);
-              
-      // Sanitize the URL
-              console.log('QR Code generated successfully:', this.qrCodeImage);
-    
-              // Manually trigger change detection to update the UI
-              // this.cdr.detectChanges();
-    
-              // Start polling for status
-              this.startPolling();
-            } else {
-              console.error('Invalid blob response:', blob);
-            }
-          },
-          error: (err) => {
-            console.error('Error generating QR Code:', err);
-          },
-        });
-      }
-    })
-
+    if(this.sessionData.status == 'connected'){
+      this.qrCodeSubscription = this.service.recoverSession().subscribe({
+        next: (data) => {
+          this.toastr.success('Your session is Active')
+        },
+        error: (err) => {
+          this.qrCodeSubscription = this.service.loginWhatsapp().subscribe({
+            next: (blob) => {
+              if (blob && blob instanceof Blob) {
+                const url = window.URL.createObjectURL(blob);
+                this.qrCodeImage = this.sanitizer.bypassSecurityTrustUrl(url);
+                this.sessionData.qrCodeImage = this.qrCodeImage;
+                console.log('QR Code generated successfully',this.qrCodeImage);
+                
+        // Sanitize the URL
+                console.log('QR Code generated successfully:', this.qrCodeImage);
+      
+                // Manually trigger change detection to update the UI
+                // this.cdr.detectChanges();
+      
+                // Start polling for status
+                this.startPolling();
+              } else {
+                console.error('Invalid blob response:', blob);
+              }
+            },
+            error: (err) => {
+              console.error('Error generating QR Code:', err);
+            },
+          });
+        },
+      });
+    }else{
+      this.service.checkStatus({}).subscribe({
+        next:data=>{
+          this.toastr.success("You are all ready loggedin");
+        },
+        error:err=>{
+          this.qrCodeSubscription = this.service.loginWhatsapp().subscribe({
+            next: (blob) => {
+              if (blob && blob instanceof Blob) {
+                const url = window.URL.createObjectURL(blob);
+                this.qrCodeImage = this.sanitizer.bypassSecurityTrustUrl(url);
+                this.sessionData.qrCodeImage = this.qrCodeImage;
+                console.log('QR Code generated successfully',this.qrCodeImage);
+                
+        // Sanitize the URL
+                console.log('QR Code generated successfully:', this.qrCodeImage);
+      
+                // Manually trigger change detection to update the UI
+                // this.cdr.detectChanges();
+      
+                // Start polling for status
+                this.startPolling();
+              } else {
+                console.error('Invalid blob response:', blob);
+              }
+            },
+            error: (err) => {
+              console.error('Error generating QR Code:', err);
+            },
+          });
+        }
+      })
+    }
    
   }
 

@@ -23,9 +23,16 @@ url=env.url
   //   return this.http.post(`${this.url}whatsapp/whastapp`, data,{ withCredentials: true })
   // }
 
-  loginWhatsapp(sessionData: { sessionId: string }): Observable<Blob> {
+  loginWhatsapp(): Observable<Blob> {
     console.log("methodcalss in service")
-    return this.http.post(`${this.url}whatsapp/whatsapp`, sessionData, {
+    return this.http.post(`${this.url}whatsapp/whatsapp`, {}, {
+      responseType: 'blob',
+      withCredentials: true
+    },);
+  }
+  recoverSession(): Observable<Blob> {
+    
+    return this.http.post(`${this.url}whatsapp/check/session`, {}, {
       responseType: 'blob',
       withCredentials: true
     },);
