@@ -1,4 +1,4 @@
-<!-- session.component.html -->
+
 <div class="table-container">
   <h2>Session Details</h2>
   <table>
@@ -10,27 +10,24 @@
         <th>User ID</th>
         <th>Username</th>
         <th>Action</th>
-        <th>Login</th>
+        <th>QR</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>{{ sessionData.sessionId }}</td>
-        <td>{{ sessionData.platform }}</td>
-        <td>{{ sessionData.status }}</td>
-        <td>{{ sessionData.userId }}</td>
-        <td>{{ sessionData.username }}</td>
-        <td><button class="btn btn-info">check</button></td>
+        <td>{{ sessionData.sessionId || 'na'}}</td>
+        <td>{{ sessionData.platform  || 'NA' }}</td>
+        <td>{{ sessionData.status  || 'NA'}}</td>
+        <td>{{ sessionData.userId  || 'NA'}}</td>
+        <td>{{ sessionData.username  || 'NA'}}</td>
         <td><button class="btn btn-success" (click)="callApi()">Login</button></td>
+     <td class="td-qr" *ngIf="qrCodeImage">
+      <img [src]="qrCodeImage" alt="QR Code"  />
+     </td>
+    
       </tr>
-      <!-- Add more rows here as needed -->
     </tbody>
   </table>
 </div>
 
-
-<div *ngIf="qrCodeImage">
-    <img [src]="qrCodeImage" alt="QR Code" />
-  </div>
-  
-<!-- <button class="btn btn-success" (click)="callApi()">click </button> -->
+<!-- Separate QR Image section if needed -->

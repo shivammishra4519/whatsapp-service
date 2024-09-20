@@ -1,8 +1,7 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { ApiService } from '../../service/api.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { interval, Subscription } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -10,91 +9,133 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './login-whatsapp.component.html',
   styleUrls: ['./login-whatsapp.component.css']
 })
-export class LoginWhatsappComponent  {
-  qrCodeImage: SafeUrl | null = null; // Use SafeUrl type for security
+export class LoginWhatsappComponent implements OnDestroy {
+  qrCodeImage: SafeUrl | null = null; // SafeUrl ensures Angular security
   private pollingSubscription: Subscription | undefined;
   private qrCodeSubscription: Subscription | undefined;
   public data: any;
-  sessionData:any;
-  constructor(private service: ApiService, private sanitizer: DomSanitizer,private toastr:ToastrService) {
-    service.getSession().subscribe({
-      next:data=>{
-        console.log(data);
-        this.sessionData=data;
-      }
-    })
-  }
-
-  callApi(): void {
-    console.log("Generating QR Code...");
-
-    // Generate the QR code and start polling only on success
-    this.qrCodeSubscription = this.service.loginWhatsapp({ sessionId: '9335792497' }).subscribe({
-      next: (blob) => {
-        const url = window.URL.createObjectURL(blob);
-        this.qrCodeImage = this.sanitizer.bypassSecurityTrustUrl(url);
-        console.log('QR Code generated successfully');
-
-        // Start polling for status
-        this.startPolling();
-        // setInterval(() => {
-        //   this.service.checkStatus({})
-        //     .subscribe(
-        //       response => {
-        //         this.data = response;
-        //         this.toastr.success("You are connected successfully", 'Success');
-        //         this.qrCodeImage = null;
-        //         // Stop polling if a successful status is received
-        //         if (this.data) { // Adjust based on your response structure
-        //           console.log('Successful status received. Stopping polling.');
-                  
-        //         }
-        //       },
-        //       error => {
-        //         console.error('Error fetching status:', error);
-        //       }
-        //     );
-        // }, 1000);
-      },
-      error: (err) => {
-        console.error('Error generating QR Code:', err);
-      },
-    });
-  }
+  public sessionData: any = {};
 
   private pollingIntervalId: any;
   private successNotified: boolean = false; // Flag to ensure toastr is only shown once
-  
-  private startPolling(): void {
-    this.pollingIntervalId = setInterval(() => {
-      this.service.checkStatus({})
-        .subscribe(
-          response => {
-            this.data = response;
-  
-            if (!this.successNotified && this.data) { // Check if toastr has not been shown and if data is valid
-              this.toastr.success("You are connected successfully", 'Success');
-              this.qrCodeImage = null;
-              this.successNotified = true; // Set the flag to true so toastr is not shown again
-              console.log('Successful status received. Stopping polling.');
-              this.stopPolling(); // Stop the polling
+
+  constructor(
+    private service: ApiService,
+    private sanitizer: DomSanitizer,
+    private toastr: ToastrService,
+    private cdr: ChangeDetectorRef // Add ChangeDetectorRef to force UI updates
+  ) {
+    this.loadSessionData();
+  }
+
+  /**
+   * Load session data when the component is initialized.
+   */
+  private loadSessionData(): void {
+    this.service.getSession().subscribe({
+      next: data => {
+        console.log('Session data loaded:', data);
+        this.sessionData = data;
+      },
+      error: err => {
+        console.error('Error loading session data:', err);
+      }
+    });
+  }
+
+  /**
+   * Call the API to generate the QR code and display it.
+   */
+  callApi(): void {
+    console.log("Generating QR Code...");
+    this.service.checkStatus({}).subscribe({
+      next:data=>{
+        this.toastr.success("You are all ready loggedin");
+      },
+      error:err=>{
+        this.qrCodeSubscription = this.service.loginWhatsapp({ sessionId: '9335792497' }).subscribe({
+          next: (blob) => {
+            if (blob && blob instanceof Blob) {
+              const url = window.URL.createObjectURL(blob);
+              this.qrCodeImage = this.sanitizer.bypassSecurityTrustUrl(url);
+              this.sessionData.qrCodeImage = this.qrCodeImage;
+              console.log('QR Code generated successfully',this.qrCodeImage);
+              
+      // Sanitize the URL
+              console.log('QR Code generated successfully:', this.qrCodeImage);
+    
+              // Manually trigger change detection to update the UI
+              // this.cdr.detectChanges();
+    
+              // Start polling for status
+              this.startPolling();
+            } else {
+              console.error('Invalid blob response:', blob);
             }
           },
-          error => {
-            console.error('Error fetching status:', error);
+          error: (err) => {
+            console.error('Error generating QR Code:', err);
+          },
+        });
+      }
+    })
+
+   
+  }
+
+  /**
+   * Start polling for status updates after QR code generation.
+   */
+  private startPolling(): void {
+    if (this.pollingIntervalId) {
+      this.stopPolling(); // Stop any previous polling before starting a new one
+    }
+
+    this.pollingIntervalId = setInterval(() => {
+      this.service.checkStatus({}).subscribe({
+        next: response => {
+          this.data = response;
+          
+          // Show success notification only once
+          if (!this.successNotified && this.data) {
+            this.toastr.success("You are connected successfully", 'Success');
+            this.successNotified = true; // Prevent repeated notifications
+            console.log('Successful status received. Stopping polling.');
+            this.qrCodeImage=null
+            this.stopPolling(); // Stop polling after success
           }
-        );
+        },
+        error: err => {
+          console.error('Error fetching status:', err);
+        }
+      });
     }, 1000); // Poll every second
   }
-  
+
+  /**
+   * Stop polling for status updates.
+   */
   private stopPolling(): void {
     if (this.pollingIntervalId) {
-      clearInterval(this.pollingIntervalId);
+      clearInterval(this.pollingIntervalId); // Stop the polling interval
       this.pollingIntervalId = null;
     }
   }
-  
-  
 
- 
+  /**
+   * Cleanup when the component is destroyed.
+   */
+  ngOnDestroy(): void {
+    if (this.qrCodeSubscription) {
+      this.qrCodeSubscription.unsubscribe(); // Unsubscribe to prevent memory leaks
+    }
+    this.stopPolling(); // Ensure polling is stopped when the component is destroyed
+  }
+
+  /**
+   * Debug method to check the QR Code Image in the console.
+   */
+  checkStatus(): void {
+    console.log('QR Code Image:', this.qrCodeImage);
+  }
 }
